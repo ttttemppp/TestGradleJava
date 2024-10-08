@@ -60,21 +60,9 @@ class LinkedListTest {
         assertEquals(2, list.size());
     }
 
-    @ParameterizedTest
-    @MethodSource("dataProvider")
-    void testRandom(int a) {
+    @Test
+    void testRandom() {
         Random rand = new Random();
-        assertTrue(rand.nextInt(100) < 95);
-    }
-
-    private static Stream<Arguments> dataProvider() {
-        return Stream.of(
-                Arguments.of(1),
-                Arguments.of(2),
-                Arguments.of(3),
-                Arguments.of(4),
-                Arguments.of(5),
-                Arguments.of(6)
-        );
+        assertTrue(rand.nextInt(100) < 50);
     }
 }
