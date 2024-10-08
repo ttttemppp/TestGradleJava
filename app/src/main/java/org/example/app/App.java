@@ -18,5 +18,4 @@ public class App {
         String result = join(tokens);
         System.out.println(WordUtils.capitalize(result));
     }
-    ///
 }
