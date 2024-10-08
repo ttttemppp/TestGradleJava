@@ -4,16 +4,26 @@
 package org.example.list;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class LinkedListTest {
-    @Test void testConstructor() {
+    @Test
+    void testConstructor() {
         LinkedList list = new LinkedList();
         assertEquals(0, list.size());
     }
 
-    @Test void testAdd() {
+    @Test
+    void testAdd() {
         LinkedList list = new LinkedList();
 
         list.add("one");
@@ -25,7 +35,8 @@ class LinkedListTest {
         assertEquals("two", list.get(1));
     }
 
-    @Test void testRemove() {
+    @Test
+    void testRemove() {
         LinkedList list = new LinkedList();
 
         list.add("one");
@@ -39,12 +50,31 @@ class LinkedListTest {
         assertEquals(0, list.size());
     }
 
-    @Test public void testRemoveMissing() {
+    @Test
+    public void testRemoveMissing() {
         LinkedList list = new LinkedList();
 
         list.add("one");
         list.add("two");
         assertFalse(list.remove("three"));
         assertEquals(2, list.size());
+    }
+
+    @ParameterizedTest
+    @MethodSource("dataProvider")
+    void testRandom(int a) {
+        Random rand = new Random();
+        assertTrue(rand.nextInt(100) < 95);
+    }
+
+    private static Stream<Arguments> dataProvider() {
+        return Stream.of(
+                Arguments.of(1),
+                Arguments.of(2),
+                Arguments.of(3),
+                Arguments.of(4),
+                Arguments.of(5),
+                Arguments.of(6)
+        );
     }
 }
