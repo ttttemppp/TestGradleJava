@@ -17,5 +17,5 @@ public class App {
         tokens = split(getMessage());
         String result = join(tokens);
         System.out.println(WordUtils.capitalize(result));
-    }
+    } //
 }
